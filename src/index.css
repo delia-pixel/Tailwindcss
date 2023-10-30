@@ -23,7 +23,7 @@
     }
 
     .box{
-        @apply w-[100px] h-[100px] bg-slate-300 rounded-md flex justify-center items-center font-bold
+        @apply w-[100px] h-[100px] bg-slate-300 rounded-md flex justify-center items-center font-bold mb-2
     }
 }
 
