@@ -1,7 +1,6 @@
 import { motion} from "framer-motion";
 
 const ShoeCard = ({ imgURL, changeBigShoeImage, bigShoeImg }) => {
-  console.log(imgURL);
   const handleClick = () => {
     if (bigShoeImg !== imgURL.bigShoe) {
       changeBigShoeImage(imgURL.bigShoe);

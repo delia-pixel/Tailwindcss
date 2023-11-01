@@ -1,58 +1,62 @@
 import Button from "../components/Button";
 import { arrowRight } from "../assets/icons";
 import { shoes, statistics } from "../constants";
-import { bigShoe1} from "../assets/images";
+import { bigShoe1 } from "../assets/images";
 import ShoeCard from "../components/ShoeCard";
-import { useEffect, useState } from "react";
-import { animate, motion, useMotionValue, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const [bigShoeImg, setBigShoeImg] = useState(bigShoe1);
-
-  const count = useMotionValue(0);
-  const rounded = (value) => {
-    useTransform(count, (latest) => Math.round(latest));
-
-    useEffect(() => {
-      const controls = animate(count, value);
-
-      return controls.stop;
-    }, []);
-  }
-  
+  const textVariants = {
+    hidden: { x: -200, opacity: 0 },
+    visible: { x: 0, opacity: 1 },
+  };
   return (
     <section
       id="home"
       className="w-full flex xl:flex-row flex-col justify-center min-h-screen max-container"
     >
       <div className="relative xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding-x pt-28">
-        <p className="text-xl font-montserrat text-coral-red">
+        <motion.p
+          variants={textVariants}
+          initial="hidden"
+          whileInView="visible"
+          transition={{ duration: 2, delay: 1 }}
+          className="text-xl font-montserrat text-coral-red"
+        >
           Our Summer Collection
-        </p>
-        <h1 className="mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82] font-bold">
+        </motion.p>
+        <motion.h1
+          variants={textVariants}
+          initial="hidden"
+          whileInView="visible"
+          transition={{ duration: 2, delay: 1 }}
+          className="mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82] font-bold"
+        >
           <span className="xl:bg-white xl:whitespace-nowrap relative z-10 pr-10">
             The New Arrival
           </span>
           <br />
           <span className="text-coral-red inline-block mt-3">Nike</span> Shoes
-        </h1>
-        <p className="font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">
+        </motion.h1>
+        <motion.p
+          initial={{opacity:0, x:10}}
+          whileInView={{ opacity: [0.2,0.5, 1], x:0 }}
+          transition={{duration:2, delay:1}}
+          className="font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">
           Discover stylish Nike arrivals, quality comfort, and innovation for
           your active life.{" "}
-        </p>
-        {/* <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        /> */}
+        </motion.p>
+
         <Button label="Shop now" iconUrl={arrowRight}></Button>
         <div className="flex justify-start items-start flex-wrap w-full mt-20 gap-16">
           {statistics.map((stat) => (
             <div key={stat.label}>
               <p className="text-4xl font-bold font-palanquin">
                 {" "}
-                <motion.span />
-                {rounded(stat.value)}
+                <span />
+                {stat.value}
               </p>
               <p className="leading-7 font-montserrat text-slate-gray">
                 {stat.label}
@@ -62,7 +66,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="relative flex flex-1 justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover">
-        <motion.img
+        <img
           src={bigShoeImg}
           layoutId="image"
           alt="shoe collection"
@@ -86,6 +90,6 @@ const Hero = () => {
       </div>
     </section>
   );
-}
+};
 
-export default Hero
+export default Hero;
