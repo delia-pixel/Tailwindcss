@@ -30,7 +30,7 @@ const Hero = () => {
         <motion.h1
           variants={textVariants}
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           transition={{ duration: 2, delay: 1 }}
           className="mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82] font-bold"
         >
@@ -41,10 +41,11 @@ const Hero = () => {
           <span className="text-coral-red inline-block mt-3">Nike</span> Shoes
         </motion.h1>
         <motion.p
-          initial={{opacity:0, x:10}}
-          whileInView={{ opacity: [0.2,0.5, 1], x:0 }}
-          transition={{duration:2, delay:1}}
-          className="font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">
+          initial={{ opacity: 0, x: 10 }}
+          whileInView={{ opacity: [0.2,0.5, 1], x: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm"
+        >
           Discover stylish Nike arrivals, quality comfort, and innovation for
           your active life.{" "}
         </motion.p>
@@ -68,7 +69,7 @@ const Hero = () => {
       <div className="relative flex flex-1 justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover">
         <img
           src={bigShoeImg}
-          layoutId="image"
+          layoutId="underline"
           alt="shoe collection"
           width={610}
           height={500}
