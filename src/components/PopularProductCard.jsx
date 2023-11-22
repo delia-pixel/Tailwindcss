@@ -2,8 +2,8 @@ import { star } from "../assets/icons";
 import { motion } from "framer-motion";
 import Modal from "./Modal";
 import { useState } from "react";
-import view from "../assets/icons/view.png";
-
+import ProductOverview
+  from "./ProductOverview";
 const PopularProductCard = ({ imgURL, name, price }) => {
   const [open, setOpen] = useState(false);
 
@@ -16,6 +16,7 @@ const PopularProductCard = ({ imgURL, name, price }) => {
           duration: 0.5,
         }}
         className="flex flex-1 flex-col w-full max-sm:w-full"
+        onClick={() => setOpen(true)}
       >
         <motion.img
           src={imgURL}
@@ -41,18 +42,19 @@ const PopularProductCard = ({ imgURL, name, price }) => {
 
         <p className="mt-2 font-semibold font-montserrat text-2xl leading-normal text-coral-red">
           {price}{" "}
-          <img
+          {/* <img
             className="cursor-pointer"
             src={view}
             alt="eye icon"
             width={30}
             height={30}
             onClick={() => setOpen(true)}
-          />
+          /> */}
         </p>
       </motion.div>
       <Modal open={open} onClose={() => setOpen(false)}>
-        <h1>Hello here ! {name} </h1>
+        {/* <h1>Hello here ! {name} </h1> */}
+        <ProductOverview imgURL={imgURL} name={name} price={price}></ProductOverview>
       </Modal>
     </>
   );
