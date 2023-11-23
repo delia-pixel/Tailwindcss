@@ -71,6 +71,31 @@ export const products = [
     price: "$230.20",
   },
 ];
+export const sizes = [
+  {
+    size: 38,
+  },
+  {
+    size: 39,
+  },
+  {
+    size: 40,
+  },
+  {
+    size: 41,
+  },
+  {
+    size: 42,
+  },
+  {
+    size: 44,
+  },
+  {
+    size: 45,
+  },
+];
+
+
 
 export const services = [
   {
